@@ -16,7 +16,7 @@ phases:
       - npm install
       - echo install client dependencies...
       - cd client
-      - npm run setup
+      - npm install
       - echo build client...
       - npm run build
       - cd ..
