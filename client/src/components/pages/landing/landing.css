@@ -1,0 +1,365 @@
+*{
+  transition-duration: 0.3s;
+}
+
+body{
+  font-family: Raleway, sans-serif;
+}
+
+p{
+  font-family: Raleway, sans-serif;
+}
+.screen1{
+  width: 100%;
+  height: 100vh;
+}
+
+
+.titleb {
+  width: 100%;
+  height: 7vh;
+  background: rgba(0,176,255,1);
+  opacity: 1;
+  position: relative;
+  text-align: center;
+}
+
+.title {
+  width: 507px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 0.5vw;
+  left: 33vw;
+  font-size: 28px;
+  opacity: 1;
+  text-align: center;
+}
+
+.landingLogo {
+  position: relative;
+  top :10vh;
+  text-align: center;
+}
+
+.topics{
+  position: absolute ;
+  top :40vh;
+  left: 11vw;
+}
+
+.dots{
+  position: absolute;
+  left: 6vw;
+}
+
+.dot1{
+  position: absolute;
+  top: 24.5vh;
+  
+}
+.dot2{
+  position: absolute;
+  top: 33vh;
+}
+.dot3{
+  position: absolute;
+  top: 41.5vh;
+}
+
+.image1{
+  position: absolute;
+  top: 35vh;
+  left: 46vw;
+}
+
+.signInbtn {
+  position: absolute;
+  width: 98px;
+  height: 45px;
+  right: 70vw;
+  top: 80vh;
+  text-align: center;
+  border: 1px solid;
+  border-color: #e0e0e0;
+  border-radius: 10px;
+  padding-top: 5px;
+  color: #00b0ff;
+  font-weight: bolder;
+  background-color: white;
+  box-shadow: 2px 3px  #BFBFBF;
+  cursor: pointer;
+}
+
+.signUpbtn {
+  position: absolute;
+  width: 98px;
+  height: 45px;
+  left: 10vw;
+  top: 80vh;
+  text-align: center;
+  border: 1px solid;
+  border-color: #00b0ff;
+  border-radius: 10px;
+  padding-top: 5px;
+  color: #ffffff;
+  font-weight: bolder;
+  background-color: #00b0ff;
+  box-shadow: 2px 3px  #BFBFBF;
+  cursor: pointer;
+}
+
+.screen2{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.topic1{
+  position: absolute;
+  top: 5vh;
+  left: 55vw;
+}
+
+.t1{
+  font-size: 50px;
+  
+}
+
+.t1a{
+  font-size: 50px;
+  font-weight: bolder;
+}
+  
+.image2{
+  position: absolute;
+  top: 15vh;
+  left: 5vw;
+}
+.para2{
+  position: absolute;
+  top: 50vh;
+  left: 10.3vh;
+  margin-right: 20vw;
+}
+.p2{
+  font-size: 30px;
+}
+.screen3{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.topic2{
+  position: absolute;
+  top: 5vh;
+  left: 4.5vw;
+}
+
+.t2{
+  font-size: 50px;
+  
+}
+
+.t2a{
+  font-size: 50px;
+  font-weight: bolder;
+}
+.image3{
+  position: absolute;
+  top: 25vh;
+  left: 50vw;
+}
+.para3{
+  position: absolute;
+  top: 40vh;
+  left: 10.3vh;
+  margin-right: 70vw;
+}
+.p3{
+  font-size: 30px;
+  
+}
+
+.screen4{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.topic3{
+  position: absolute;
+  top: 5vh;
+  left: 70vw;
+}
+
+.t3{
+  font-size: 50px;
+  
+}
+
+.t3a{
+  font-size: 50px;
+  font-weight: bolder;
+}
+  
+.image4{
+  position: absolute;
+  top: 25vh;
+  left: 5vw;
+}
+.para4{
+  position: absolute;
+  top: 40vh;
+  left: 60vw;
+  margin-right: 20vw;
+}
+.p4{
+  text-align: right;
+  font-size: 30px;
+}
+
+.screen5{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.topic4{
+  position: absolute;
+  top: 5vh;
+  left: 4.5vw;
+}
+
+.t4{
+  font-size: 50px;
+  
+}
+
+.t4a{
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.image5{
+  position: absolute;
+  top: 25vh;
+  left: 50vw;
+}
+.para5{
+  position: absolute;
+  top: 30vh;
+  left: 10.3vh;
+  margin-right: 60vw;
+}
+.p5{
+  font-size: 29px;
+}
+
+.titleb2 {
+  width: 100%;
+  height: 7vw;
+  background: rgba(0,176,255,1);
+  opacity: 1;
+  position: relative;
+  top:15vh;
+  left: 0px;
+  
+}
+
+.title2 {
+  width: 507px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 5vh;
+  left: 23vw;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+
+.btt {
+  position: absolute;
+  width: 180px;
+  height: 50px;
+  left: 60vw;
+  top: 5vh;
+  text-align: center;
+  border: 1px solid;
+  border-color: #e0e0e0;
+  border-radius: 10px;
+  padding-top: 5px;
+  color: #00b0ff;
+  font-weight: bolder;
+  background-color: white;
+  box-shadow: 2px 3px  #BFBFBF;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pp1{
+  position: absolute;
+  top: 75vh;
+  left: 30vw;
+}
+
+.pp2{
+  position: absolute;
+  top: 80vh;
+  left: 50vw;
+}
+
+.ew1{
+  position: absolute;
+  top: 85vh;
+  right: 45vw;
+  font-size: 30px;
+}
+
+.pp3{
+  position: absolute;
+  top: 65vh;
+  left: 30vw;
+  
+}
+
+.pp4{
+  position: absolute;
+  top: 70vh;
+  left: 27vw;
+}
+
+.pp5{
+  position: absolute;
+  top: 75vh;
+  left: 40vw;
+}
+
+@media only screen and (max-width: 1150px) {
+  .dot1{
+    position: absolute;
+    top: 24.5vh;
+  }
+  .dot2{
+    position: absolute;
+    top: 33vh;
+  }
+  .dot3{
+    position: absolute;
+    top: 41.5vh;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .dot1{
+    position: absolute;
+    top: 24.5vh;
+  }
+  .dot2{
+    position: absolute;
+    top: 33vh;
+  }
+  .dot3{
+    position: absolute;
+    top: 41.5vh;
+  }
+
+}

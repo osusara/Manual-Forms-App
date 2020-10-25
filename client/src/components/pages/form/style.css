@@ -1,0 +1,10 @@
+.document-icon-div {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.document-icon-div:hover {
+  background-color: #979797;
+}

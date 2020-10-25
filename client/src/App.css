@@ -1,0 +1,46 @@
+
+.card {
+  border-radius: 10px;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btn {
+  text-align: center;
+  border: 1px solid;
+  border-radius: 10px;
+  font-weight: bolder;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 15px 7px 15px;
+}
+
+.btn-primary {
+  border-color: #6ec5ee;
+  color: #ffffff;
+  background-color: #00b0ff;
+  box-shadow: 2px 3px  #7dbbd8;
+}
+
+.btn-dark {
+  border-color: #979797;
+  color: #ffffff;
+  background-color: #576264;
+  box-shadow: 2px 3px  #5c5c5c;
+}
+
+.btn-secondary {
+  border-color: #e0e0e0;
+  color: #00b0ff;
+  background-color: white;
+  box-shadow: 2px 3px  #BFBFBF;
+}
+
+.btn-danger {
+  border-color: #997676;
+  color: #ffffff;
+  background-color: #942d2d;
+  box-shadow: 2px 3px  #665151;
+}

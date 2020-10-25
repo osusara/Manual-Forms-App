@@ -1,0 +1,29 @@
+.header-bg {
+  background: rgba(0,176,255,1);
+}
+
+.footer-box {
+  width: 100%;
+  background: rgba(0,176,255,1);
+}
+
+.footer-title {
+  color: rgba(255,255,255,1);
+  font-size: 40px;
+  text-align: center;
+}
+
+.btn-btt {
+  width: 180px;
+  height: 50px;
+  text-align: center;
+  border: 1px solid;
+  border-color: #e0e0e0;
+  border-radius: 10px;
+  color: #00b0ff;
+  font-weight: bolder;
+  background-color: white;
+  box-shadow: 2px 3px  #BFBFBF;
+  cursor: pointer;
+  font-size: 16px;
+}
