@@ -8,6 +8,8 @@ import {
   LOGIN_FAIL,
   UPDATE_SUCCESS,
   UPDATE_FAIL,
+  PASSWORD_SUCCESS,
+  PASSWORD_FAIL,
   LOGOUT,
 } from "./types";
 import { setAlert } from "./alert";
@@ -96,7 +98,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Update user
-export const update = (formData, history) => async (dispatch) => {
+export const update = (formData) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -104,11 +106,6 @@ export const update = (formData, history) => async (dispatch) => {
   };
 
   const body = JSON.stringify(formData);
-
-  const data = {};
-  if (formData.firstname) data.firstname = formData.firstname;
-  if (formData.lastname) data.lastname = formData.lastname;
-  if (formData.email) data.email = formData.email;
 
   try {
     const res = await axios.put("/api/user", body, config);
@@ -119,8 +116,7 @@ export const update = (formData, history) => async (dispatch) => {
     });
 
     dispatch(setAlert("Profile Updated", "success"));
-    history.push("/profile");
-
+    dispatch(loadUser());
   } catch (error) {
     const errors = error.response.data.errors;
 
@@ -132,6 +128,37 @@ export const update = (formData, history) => async (dispatch) => {
     });
   }
 };
+
+// Change password
+export const editPassword = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const body = JSON.stringify(formData);
+
+  try {
+    const res = await axios.put("/api/user/password", body, config);
+
+    dispatch({
+      type: PASSWORD_SUCCESS,
+      payload: res.data,
+    });
+
+    dispatch(setAlert("Password Changed", "success"));
+  } catch (error) {
+    const errors = error.response.data.errors;
+
+    if (errors)
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+
+    dispatch({
+      type: PASSWORD_FAIL,
+    });
+  }
+}
 
 // Logout
 export const logout = () => (dispatch) => {

@@ -11,11 +11,19 @@ const Notification = ({ alerts, removeAlert }) =>
   alerts.map((alert) => (
     <div
       key={alert.id}
-      style={{ position: "fixed", zIndex: "99", float: "right" }}
+      style={{
+        position: "fixed",
+        right: "0",
+        bottom: "0",
+        zIndex: "99",
+        minHeight: "200px",
+      }}
+      className="m-4"
     >
       <Toast
         onClose={(e) => removeAlert(alert.id)}
-        className="ml-3 mt-3 shadow-sm"
+        className="shadow-sm"
+        style={{ border: "none", boarderRadius: "10px" }}
         delay="5000"
         autohide
       >

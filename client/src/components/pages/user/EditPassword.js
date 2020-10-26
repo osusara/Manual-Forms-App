@@ -4,24 +4,32 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
-import { update } from "../../../actions/user";
-import userImg from "../../../assets/images/user.png"
+import { editPassword } from "../../../actions/user";
+import { setAlert } from "../../../actions/alert";
+import userImg from "../../../assets/images/user.png";
 
-const Profile = ({ update, user: { isAuthenticated, data } }) => {
+const EditPassword = ({ setAlert, editPassword, user: { isAuthenticated } }) => {
   const [formData, setFormData] = useState({
-    firstname: data ? data.firstname : "",
-    lastname: data ? data.lastname : "",
-    email: data ? data.email : "",
+    currentPw: "",
+    newPw: "",
+    verifyPw: "",
   });
 
-  const { firstname, lastname, email } = formData;
+  const { currentPw, newPw, verifyPw } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    update(formData);
+
+    if (newPw === verifyPw) {
+      editPassword(formData);
+    } else {
+      setAlert("New password does not match with verification", "danger");
+    }
+
+    return <Redirect to="/login" />;
   };
 
   if (!isAuthenticated)
@@ -30,7 +38,7 @@ const Profile = ({ update, user: { isAuthenticated, data } }) => {
   return (
     <Container fluid={true}>
       <h2 className="text-dark">
-        User <b>Settings</b>
+        Change <b>Password</b>
       </h2>
       <Row className="my-4">
         <Col lg={6} md={8} sm={10} xs={12} className="m-auto">
@@ -41,11 +49,11 @@ const Profile = ({ update, user: { isAuthenticated, data } }) => {
             <Form.Group>
               <Form.Control
                 className="shadow-sm text-center text-dark my-2"
-                placeholder="First Name"
-                type="text"
-                name="firstname"
+                placeholder="Current Password"
+                type="password"
+                name="currentPw"
                 size="lg"
-                value={firstname}
+                value={currentPw}
                 onChange={(e) => onChange(e)}
                 required
               ></Form.Control>
@@ -53,11 +61,11 @@ const Profile = ({ update, user: { isAuthenticated, data } }) => {
             <Form.Group>
               <Form.Control
                 className="shadow-sm text-center text-dark my-2"
-                placeholder="Last Name"
-                type="text"
-                name="lastname"
+                placeholder="New Password"
+                type="password"
+                name="newPw"
                 size="lg"
-                value={lastname}
+                value={newPw}
                 onChange={(e) => onChange(e)}
                 required
               ></Form.Control>
@@ -65,11 +73,11 @@ const Profile = ({ update, user: { isAuthenticated, data } }) => {
             <Form.Group>
               <Form.Control
                 className="shadow-sm text-center text-dark my-2"
-                placeholder="Email Address"
-                type="email"
-                name="email"
+                placeholder="Verify Password"
+                type="password"
+                name="verifyPw"
                 size="lg"
-                value={email}
+                value={verifyPw}
                 onChange={(e) => onChange(e)}
                 required
               ></Form.Control>
@@ -81,8 +89,8 @@ const Profile = ({ update, user: { isAuthenticated, data } }) => {
               >
                 <h5 className="my-auto">Save</h5>
               </Button>
-              <Link to="/profile/pw" className="btn btn-secondary px-4 py-3">
-                <h5 className="my-auto">Change Password</h5>
+              <Link to="/profile" className="btn btn-secondary px-4 py-3">
+                <h5 className="my-auto">Discard</h5>
               </Link>
             </Form.Group>
           </Form>
@@ -92,8 +100,9 @@ const Profile = ({ update, user: { isAuthenticated, data } }) => {
   );
 };
 
-Profile.protoType = {
-  update: PropTypes.func.isRequired,
+EditPassword.protoType = {
+  editPassword: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
 };
 
@@ -101,4 +110,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { update })(Profile);
+export default connect(mapStateToProps, { editPassword, setAlert })(EditPassword);

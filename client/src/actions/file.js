@@ -12,6 +12,7 @@ import {
 export const uploadFile = (files, form) => async (dispatch) => {
   const formData = new FormData();
   formData.append("form", form);
+  
   for (let file of files) {
     formData.append("filesList", file);
   }

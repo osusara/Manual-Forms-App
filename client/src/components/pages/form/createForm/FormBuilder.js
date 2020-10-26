@@ -79,7 +79,7 @@ const FormBuilder = ({ createForm }) => {
 
   return (
     <Container fluid={true}>
-      <h2 className="text-light">
+      <h2 className="text-dark">
         Create <b>Form</b>
       </h2>
       <Row>

@@ -24,7 +24,7 @@ const FormsViewer = ({ forms, files }) => {
     <Container fluid={true}>
       {show ? <FormEditor show={show} setShow={setShow} form={formData} /> : ""}
       {pdfShow ? <PDFView show={pdfShow} setShow={setPdfShow} file={file} /> : ""}
-      <h2 className="text-light">
+      <h2 className="text-dark">
         My <b>Documents</b>
       </h2>
       <Row>

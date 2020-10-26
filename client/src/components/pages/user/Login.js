@@ -28,7 +28,7 @@ const Login = ({ login, isAuthenticated }) => {
     <Container fluid={true}>
       <Row className="my-4">
         <Col lg={4} md={8} sm={10} xs={12} className="m-auto">
-          <Card className="bg-light shadow-sm p-3">
+          <Card className="bg-light shadow-sm my-5 p-3">
             <Card.Body className="text-center">
               <Card.Title className="text-dark">
                 <h2>Sign In</h2>
@@ -58,13 +58,13 @@ const Login = ({ login, isAuthenticated }) => {
                   ></Form.Control>
                 </Form.Group>
                 <Form.Group>
-                  <Button variant="primary" type="submit" className="shadow-sm">
-                    Sign In
+                  <Button variant="primary" type="submit" className="shadow-sm px-4 py3">
+                    <h5>Sign In</h5>
                   </Button>
                   <p className="mt-2">
                     Not a Buddy Yet?{" "}
-                    <Link to="/register" className="text-dark">
-                      Sign Up
+                    <Link to="/register" className="text-dark px-4 py-3">
+                      <h5>Sign Up</h5>
                     </Link>
                   </p>
                 </Form.Group>

@@ -129,7 +129,7 @@ router.post('/', [
 
 // @route   PUT api/user
 // @desc    update user
-// @access  Public
+// @access  Private
 router.put('/', auth, async (req, res) => {
   const { firstname, lastname, email } = req.body;
 
@@ -148,12 +148,51 @@ router.put('/', auth, async (req, res) => {
       }] });
     }
 
-    user = await User.findOneAndUpdate(
-      { _id: req.user.id },
-      { $set: userFields },
-      { new: true }
-    )
+    await user.save();
 
+    return res.json(user);
+
+  } catch (error) {
+    console.log(`Error: ${error.message}`);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route   PUT api/user/password
+// @desc    change password
+// @access  Private
+router.put('/password', auth, async (req, res) => {
+  const { currentPw, newPw, verifyPw } = req.body;
+
+  if (newPw !== verifyPw) {
+    return res.status(400).json({ errors: [{
+      msg: "New password cannot verify"
+    }] });
+  }
+
+  try {
+    let user = await User.findOne({ _id: req.user.id });
+
+    if (!user) {
+      return res.status(404).json({ errors: [{
+        msg: "User not found"
+      }] });
+    }
+    
+    // compare the password in db and entered one
+    const isMatch = await bcrypt.compare(currentPw, user.password);
+    
+    if(!isMatch) {
+      return res.status(400).json({ errors: [{
+        msg: 'Invalid credentials'
+      }] });
+    }
+
+    // Encrypt password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPw, salt);
+
+    await user.save();
     return res.json(user);
 
   } catch (error) {

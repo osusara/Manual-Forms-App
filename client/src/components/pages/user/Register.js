@@ -37,7 +37,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     <Container fluid={true}>
       <Row className="my-4">
         <Col lg={4} md={8} sm={10} xs={12} className="m-auto">
-          <Card className="bg-light shadow-sm p-3">
+          <Card className="bg-light shadow-sm p-3 my-5">
             <Card.Body className="text-center">
               <Card.Title className="text-dark">
                 <h2>Sign Up</h2>
@@ -105,13 +105,17 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   ></Form.Control>
                 </Form.Group>
                 <Form.Group>
-                  <Button variant="primary" type="submit" className="shadow-sm">
-                    Sign Up
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="shadow-sm px-4 py-3"
+                  >
+                    <h5>Sign Up</h5>
                   </Button>
                   <p className="mt-2">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-dark">
-                      Login
+                    <Link to="/login" className="text-dark px-4 py-3">
+                      <h5>Login</h5>
                     </Link>
                   </p>
                 </Form.Group>

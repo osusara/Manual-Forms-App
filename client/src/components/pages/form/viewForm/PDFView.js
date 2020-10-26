@@ -10,6 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const PDFView = ({ file, show, setShow, deleteFile }) => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [removeConfirm, setRemoveConfirm] = useState(false);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
@@ -18,10 +19,11 @@ const PDFView = ({ file, show, setShow, deleteFile }) => {
 
   const deleteFileHandler = () => {
     deleteFile(file._id);
+    setRemoveConfirm(false);
     setShow(false);
   };
 
-  const filePath = `${process.env.PUBLIC_URL}/uploads/${file._id}.pdf`;
+  const filePath = `https://forms-bucket.s3-ap-southeast-1.amazonaws.com/${file._id}.pdf`;
 
   return (
     <Modal size="lg" show={show} onHide={() => setShow(false)}>
@@ -54,10 +56,15 @@ const PDFView = ({ file, show, setShow, deleteFile }) => {
           </Button>
         </div>
       </Document>
+      <RemoveConfirm
+        removeConfirm={removeConfirm}
+        setRemoveConfirm={setRemoveConfirm}
+        deleteFormHandler={deleteFileHandler}
+      />
       <Modal.Footer>
         <Button
           className="btn-danger ml-auto text-right px-4 py-3"
-          onClick={() => deleteFileHandler()}
+          onClick={() => setRemoveConfirm(!removeConfirm)}
         >
           <h5 className="my-auto">Remove File</h5>
         </Button>
@@ -65,6 +72,32 @@ const PDFView = ({ file, show, setShow, deleteFile }) => {
     </Modal>
   );
 };
+
+const RemoveConfirm = ({
+  removeConfirm,
+  setRemoveConfirm,
+  deleteFormHandler,
+}) => (
+  <Modal show={removeConfirm} onHide={() => setRemoveConfirm(false)} style={{ border: "none" }}>
+    <Modal.Body>
+      <h4 className="text-primary mt-2 text-center">Are you sure to delete this form?</h4>
+      <div className="mb-3 text-center mx-auto">
+        <Button
+          className="btn btn-secondary shadow-sm px-3 mr-2 py-2"
+          onClick={() => setRemoveConfirm(false)}
+        >
+          Cancel
+        </Button>
+        <Button
+          className="btn btn-primary shadow-sm px-3 py-2"
+          onClick={() => deleteFormHandler()}
+        >
+          Delete
+        </Button>
+      </div>
+    </Modal.Body>
+  </Modal>
+);
 
 PDFView.protoType = {
   deleteFile: PropTypes.func.isRequired,

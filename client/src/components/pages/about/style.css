@@ -1,0 +1,121 @@
+.AboutMainDiv{
+  width: 85%;
+  height: 73%;
+  position: absolute;
+  top: 170px;
+  left: 13vw;
+}
+
+.AboutSubDiv{
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.aboutTitle {
+    width: 100px;
+    position: absolute;
+    top: 1vw;
+    left: 74vw;
+    font-size: 25px;
+    opacity: 1;
+    text-align: center;
+    font-weight: bolder;
+    color: #3f3d56;
+    transition: 0.3s;
+  }
+.logo1{
+  position: absolute;
+  top: 2vw;
+  left: 33vw;
+  width: 16vw;
+  height: 4vw;
+  transition: 0.3s;
+
+}
+.wRec{
+      position: absolute;
+    top: 8vw;
+    left: 2.5vw;
+    width: 80vw;
+    height: 43.5vh;
+    transition: 0.3s;
+
+}
+.aboutPara {
+  width: 70vw;
+    color: #000000;
+    position: absolute;
+    top: 14vw;
+    left: 6.8vw;
+    font-family: Raleway;
+    font-weight: lighter;
+    font-size: 2vw;
+    opacity: 1;
+    text-align: left;
+    cursor: pointer;
+    text-align: justify;
+    transition: 0.3s;
+
+}
+.paraTitleWord1 {
+  width: 269px;
+  position: absolute;
+  top: 10vw;
+  right: 39vw;
+  font-size: 2vw;
+  opacity: 1;
+  text-align: center;
+  font-weight: bolder;
+  color: #00b0ff;
+  transition: 0.3s;
+
+}
+.paraTitleWord2 {
+  width: 269px;
+  position: absolute;
+  top: 10vw;
+  right: 24.4vw;
+  font-size: 2vw;
+  opacity: 1;
+  text-align: center;
+  font-weight: bolder;
+  color: #3f3d56;
+  transition: 0.3s;
+
+}
+
+@media only screen and (max-width: 1150px) {
+  .aboutTitle {
+    top: 2vw;
+    left: 74vw;
+    font-size: 2vw;
+  }
+}
+
+
+@media only screen and (max-width: 900px) {
+  .aboutTitle {
+    top: 2vw;
+    left: 70vw;
+    font-size: 2vw;
+  }
+
+  .paraTitleWord1{
+    width: 244px;
+    font-size: 2.4vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+
+  }
+  .paraTitleWord2{
+    width: 244px;
+    font-size: 2.4vw;
+    margin-left: 5vw;
+  }
+
+  .aboutPara{
+    font-size: 3vw;
+
+  }
+}

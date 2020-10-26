@@ -7,6 +7,7 @@ import QuestionTypes from "./questionTypes/QuestionTypes";
 
 const FormEditor = ({ updateForm, deleteForm, form, setShow, show }) => {
   const [formData, setFormData] = useState(form);
+  const [removeConfirm, setRemoveConfirm] = useState(false);
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,6 +57,7 @@ const FormEditor = ({ updateForm, deleteForm, form, setShow, show }) => {
 
   const deleteFormHandler = () => {
     deleteForm(formData._id);
+    setRemoveConfirm(false);
     setShow(false);
   }
 
@@ -74,19 +76,14 @@ const FormEditor = ({ updateForm, deleteForm, form, setShow, show }) => {
   };
 
   return (
-    <Modal
-      size="xl"
-      show={show}
-      onHide={() => setShow(false)}
-      className="bg-secondary"
-    >
+    <Modal size="xl" show={show} onHide={() => setShow(false)}>
       <Form onSubmit={(e) => onSubmit(e)}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="bg-secondary">
           <h2>
             Edit <b>Form</b>
           </h2>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bg-secondary">
           <Card className="my-3 shadow-sm">
             <Card.Body>
               <h5>
@@ -141,8 +138,13 @@ const FormEditor = ({ updateForm, deleteForm, form, setShow, show }) => {
               </h1>
             </Card.Body>
           </Card>
+          <RemoveConfirm
+            removeConfirm={removeConfirm}
+            setRemoveConfirm={setRemoveConfirm}
+            deleteFormHandler={deleteFormHandler}
+          />
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="bg-secondary">
           <Button
             className="btn-dark mr-2 px-4 py-3"
             onClick={() => generatePDF(formData, formData._id)}
@@ -154,7 +156,7 @@ const FormEditor = ({ updateForm, deleteForm, form, setShow, show }) => {
           </Button>
           <Button
             className="btn-danger mr-2 px-4 py-3"
-            onClick={() => deleteFormHandler()}
+            onClick={() => setRemoveConfirm(!removeConfirm)}
           >
             <h5 className="my-auto">Delete</h5>
           </Button>
@@ -169,6 +171,32 @@ const FormEditor = ({ updateForm, deleteForm, form, setShow, show }) => {
     </Modal>
   );
 };
+
+const RemoveConfirm = ({
+  removeConfirm,
+  setRemoveConfirm,
+  deleteFormHandler,
+}) => (
+  <Modal show={removeConfirm} onHide={() => setRemoveConfirm(false)} style={{ border: "none" }}>
+    <Modal.Body>
+      <h4 className="text-primary mt-2 text-center">Are you sure to delete this form?</h4>
+      <div className="mb-3 text-center mx-auto">
+        <Button
+          className="btn btn-secondary shadow-sm px-3 mr-2 py-2"
+          onClick={() => setRemoveConfirm(false)}
+        >
+          Cancel
+        </Button>
+        <Button
+          className="btn btn-primary shadow-sm px-3 py-2"
+          onClick={() => deleteFormHandler()}
+        >
+          Delete
+        </Button>
+      </div>
+    </Modal.Body>
+  </Modal>
+);
 
 FormEditor.protoType = {
   updateForm: PropTypes.func.isRequired,
