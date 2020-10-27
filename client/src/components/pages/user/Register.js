@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types'
 import { connect } from "react-redux";
-import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../../actions/alert";
 import { register } from "../../../actions/user";
-import PropTypes from 'prop-types'
+import signUpImg from "../../../assets/images/signup.png"
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -31,97 +32,102 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if(isAuthenticated)
-    return <Redirect to="/" />
+    return <Redirect to="/documents" />
 
   return (
     <Container fluid={true}>
       <Row className="my-4">
-        <Col lg={4} md={8} sm={10} xs={12} className="m-auto">
-          <Card className="bg-light shadow-sm p-3 my-5">
-            <Card.Body className="text-center">
-              <Card.Title className="text-dark">
-                <h2>Sign Up</h2>
-                <hr className="hr-width mx-auto" />
-              </Card.Title>
-              <Form onSubmit={(e) => onSubmit(e)}>
-                <Form.Group>
-                  <Form.Control
-                    className="shadow-sm text-center text-dark"
-                    placeholder="First Name"
-                    type="text"
-                    name="firstname"
-                    value={firstname}
-                    onChange={(e) => onChange(e)}
-                    required
-                  ></Form.Control>
-                </Form.Group>
-                <Form.Group>
-                  <Form.Control
-                    className="shadow-sm text-center text-dark"
-                    placeholder="Last Name"
-                    type="text"
-                    name="lastname"
-                    value={lastname}
-                    onChange={(e) => onChange(e)}
-                    required
-                  ></Form.Control>
-                </Form.Group>
-                <Form.Group>
-                  <Form.Control
-                    className="shadow-sm text-center"
-                    placeholder="Email Address"
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => onChange(e)}
-                    required
-                  ></Form.Control>
-                  <Form.Text className="text-light">
-                    Your confidential data are totaly safe
-                  </Form.Text>
-                </Form.Group>
-                <Form.Group>
-                  <Form.Control
-                    className="shadow-sm text-center"
-                    placeholder="New Password"
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => onChange(e)}
-                    required
-                    minLength="6"
-                  ></Form.Control>
-                </Form.Group>
-                <Form.Group>
-                  <Form.Control
-                    className="shadow-sm text-center"
-                    placeholder="Confirm Password"
-                    type="password"
-                    name="verify"
-                    value={verify}
-                    onChange={(e) => onChange(e)}
-                    required
-                    minLength="6"
-                  ></Form.Control>
-                </Form.Group>
-                <Form.Group>
-                  <Button
-                    variant="primary"
-                    type="submit"
-                    className="shadow-sm px-4 py-3"
-                  >
-                    <h5>Sign Up</h5>
-                  </Button>
-                  <p className="mt-2">
-                    Already have an account?{" "}
-                    <Link to="/login" className="text-dark px-4 py-3">
-                      <h5>Login</h5>
-                    </Link>
-                  </p>
-                </Form.Group>
-              </Form>
-            </Card.Body>
-          </Card>
+        <Col lg={4} md={8} sm={10} xs={12} className="m-auto text-center">
+          <div className="my-5 mx-auto text-center">
+            <img src={signUpImg} alt="Sign Up" />
+          </div>
+        </Col>
+        <Col lg={4} md={8} sm={10} xs={12} className="m-auto text-center">
+          <h2 className="text-dark mb-3">
+            Sign <b>Up</b>
+          </h2>
+          <Form onSubmit={(e) => onSubmit(e)}>
+            <Form.Group>
+              <Form.Control
+                className="shadow-sm text-center my-4"
+                placeholder="First Name"
+                size="lg"
+                type="text"
+                name="firstname"
+                value={firstname}
+                onChange={(e) => onChange(e)}
+                required
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                className="shadow-sm text-center my-4"
+                placeholder="Last Name"
+                type="text"
+                size="lg"
+                name="lastname"
+                value={lastname}
+                onChange={(e) => onChange(e)}
+                required
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                className="shadow-sm text-center my-4"
+                placeholder="Email Address"
+                type="email"
+                size="lg"
+                name="email"
+                value={email}
+                onChange={(e) => onChange(e)}
+                required
+              ></Form.Control>
+              <Form.Text className="text-light">
+                Your confidential data are totaly safe
+              </Form.Text>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                className="shadow-sm text-center my-4"
+                placeholder="New Password"
+                type="password"
+                name="password"
+                size="lg"
+                value={password}
+                onChange={(e) => onChange(e)}
+                required
+                minLength="6"
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                className="shadow-sm text-center my-4"
+                placeholder="Confirm Password"
+                type="password"
+                name="verify"
+                size="lg"
+                value={verify}
+                onChange={(e) => onChange(e)}
+                required
+                minLength="6"
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Button
+                variant="primary"
+                type="submit"
+                className="shadow-sm px-4 py-3"
+              >
+                <h5 className="m-auto">Sign Up</h5>
+              </Button>
+              <p className="mt-2">
+                Already have an account?
+                <Link to="/login" className="text-dark px-4 py-3">
+                  <h5>Login</h5>
+                </Link>
+              </p>
+            </Form.Group>
+          </Form>
         </Col>
       </Row>
     </Container>
