@@ -11,6 +11,7 @@ const s3 = new AWS.S3({
   accessKeyId: process.env.IAM_USER_KEY,
   secretAccessKey: process.env.IAM_USER_SECRET,
   Bucket: process.env.BUCKET_NAME,
+  Region: process.env.BUCKET_REGOIN,
 });
 
 // @route   POST api/file

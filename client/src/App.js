@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import Startup from "./components/pages";
+import Startup from "./components/startup";
 
 // Actions
 import { loadUser } from "./actions/user";

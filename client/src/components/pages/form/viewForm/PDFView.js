@@ -27,6 +27,15 @@ const PDFView = ({ file, show, setShow, deleteFile }) => {
 
   return (
     <Modal size="lg" show={show} onHide={() => setShow(false)}>
+      {removeConfirm ? (
+        <RemoveConfirm
+          removeConfirm={removeConfirm}
+          setRemoveConfirm={setRemoveConfirm}
+          deleteFormHandler={deleteFileHandler}
+        />
+      ) : (
+        ""
+      )}
       <Document
         className="mx-auto"
         file={filePath}
@@ -56,11 +65,6 @@ const PDFView = ({ file, show, setShow, deleteFile }) => {
           </Button>
         </div>
       </Document>
-      <RemoveConfirm
-        removeConfirm={removeConfirm}
-        setRemoveConfirm={setRemoveConfirm}
-        deleteFormHandler={deleteFileHandler}
-      />
       <Modal.Footer>
         <Button
           className="btn-danger ml-auto text-right px-4 py-3"
@@ -78,9 +82,15 @@ const RemoveConfirm = ({
   setRemoveConfirm,
   deleteFormHandler,
 }) => (
-  <Modal show={removeConfirm} onHide={() => setRemoveConfirm(false)} style={{ border: "none" }}>
+  <Modal
+    show={removeConfirm}
+    onHide={() => setRemoveConfirm(false)}
+    style={{ border: "none" }}
+  >
     <Modal.Body>
-      <h4 className="text-primary mt-2 text-center">Are you sure to delete this form?</h4>
+      <h4 className="text-primary mt-2 text-center">
+        Are you sure to delete this form?
+      </h4>
       <div className="mb-3 text-center mx-auto">
         <Button
           className="btn btn-secondary shadow-sm px-3 mr-2 py-2"
