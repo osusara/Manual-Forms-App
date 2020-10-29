@@ -38,7 +38,7 @@ const DocHome = ({ form, file, getForms, getFilesByUser, isAuthenticated }) => {
                 <FormUploader list={form.list} />
               </Route>
               <Route exact path="/documents/stats">
-                <FormStatistics />
+                <FormStatistics list={form.list} />
               </Route>
             </>
           )}

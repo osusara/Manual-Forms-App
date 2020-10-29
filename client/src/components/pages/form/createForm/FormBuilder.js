@@ -82,8 +82,8 @@ const FormBuilder = ({ createForm }) => {
       <h2 className="text-dark">
         Create <b>Form</b>
       </h2>
-      <Row>
-        <Col xs={10}>
+      {/* <Row>
+        <Col xs={10}> */}
           <Form onSubmit={(e) => onSubmit(e)}>
             <Card className="my-3 shadow-sm">
               <Card.Body>
@@ -151,7 +151,7 @@ const FormBuilder = ({ createForm }) => {
               </Button>
             </div>
           </Form>
-        </Col>
+        {/* </Col>
         <Col xs={2}>
           <Card className="bg-light">
             <Card.Body>
@@ -188,7 +188,7 @@ const FormBuilder = ({ createForm }) => {
             </Card.Body>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 };
