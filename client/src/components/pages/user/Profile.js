@@ -33,46 +33,67 @@ const Profile = ({ update, user: { isAuthenticated, data } }) => {
         User <b>Settings</b>
       </h2>
       <Row className="my-4">
-        <Col lg={6} md={8} sm={10} xs={12} className="m-auto">
+        <Col lg={8} md={10} sm={10} xs={12} className="m-auto">
           <div className="my-5 mx-auto text-center">
             <img src={userImg} alt="User Profile" />
           </div>
           <Form onSubmit={(e) => onSubmit(e)}>
             <Form.Group>
-              <Form.Control
-                className="shadow-sm text-center text-dark my-2"
-                placeholder="First Name"
-                type="text"
-                name="firstname"
-                size="lg"
-                value={firstname}
-                onChange={(e) => onChange(e)}
-                required
-              ></Form.Control>
+              <Row>
+                <Col md={3} xs={12} className="my-auto">
+                  <Form.Label>First Name</Form.Label>
+                </Col>
+                <Col md={9} xs={12}>
+                  <Form.Control
+                    className="shadow-sm text-center text-dark my-2"
+                    placeholder="First Name"
+                    type="text"
+                    name="firstname"
+                    size="lg"
+                    value={firstname}
+                    onChange={(e) => onChange(e)}
+                    required
+                  ></Form.Control>
+                </Col>
+              </Row>
             </Form.Group>
             <Form.Group>
-              <Form.Control
-                className="shadow-sm text-center text-dark my-2"
-                placeholder="Last Name"
-                type="text"
-                name="lastname"
-                size="lg"
-                value={lastname}
-                onChange={(e) => onChange(e)}
-                required
-              ></Form.Control>
+              <Row>
+                <Col md={3} xs={12} className="my-auto">
+                  <Form.Label>Last Name</Form.Label>
+                </Col>
+                <Col md={9} xs={12}>
+                  <Form.Control
+                    className="shadow-sm text-center text-dark my-2"
+                    placeholder="Last Name"
+                    type="text"
+                    name="lastname"
+                    size="lg"
+                    value={lastname}
+                    onChange={(e) => onChange(e)}
+                    required
+                  ></Form.Control>
+                </Col>
+              </Row>
             </Form.Group>
             <Form.Group>
-              <Form.Control
-                className="shadow-sm text-center text-dark my-2"
-                placeholder="Email Address"
-                type="email"
-                name="email"
-                size="lg"
-                value={email}
-                onChange={(e) => onChange(e)}
-                required
-              ></Form.Control>
+              <Row>
+                <Col md={3} xs={12} className="my-auto">
+                  <Form.Label>Email address</Form.Label>
+                </Col>
+                <Col md={9} xs={12}>
+                  <Form.Control
+                    className="shadow-sm text-center text-dark my-2"
+                    placeholder="Email Address"
+                    type="email"
+                    name="email"
+                    size="lg"
+                    value={email}
+                    onChange={(e) => onChange(e)}
+                    required
+                  ></Form.Control>
+                </Col>
+              </Row>
             </Form.Group>
             <Form.Group className="text-center">
               <Button

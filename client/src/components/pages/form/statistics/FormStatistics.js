@@ -5,6 +5,45 @@ import { Pie } from "react-chartjs-2";
 const FormStatistics = ({ list }) => {
   const [form, setForm] = useState(null);
 
+  const dataSet = [
+    {
+      type: "Checkbox",
+      values: {
+        labels: ["Highly Satisfying", "Mildly Satisfying", "Not Satisfying"],
+        datasets: [
+          {
+            data: [0, 66.66, 33.34],
+            backgroundColor: ["#00b0ff", "#576264"],
+          },
+        ],
+      },
+    },
+    {
+      type: "Checkbox",
+      values: {
+        labels: ["High Difficulty", "Standard Difficulty", "Low Difficulty"],
+        datasets: [
+          {
+            data: [66.66, 33.34, 0],
+            backgroundColor: ["#00b0ff", "#576264"],
+          },
+        ],
+      },
+    },
+    {
+      type: "Shortanswers",
+      values: ["4", "0", "3"],
+    },
+    {
+      type: "Shortanswers",
+      values: ["No the time was not enough", "yes", "No"],
+    },
+    {
+      type: "Shortanswers",
+      values: ["50", "86", "45"],
+    }
+  ];
+
   const dummyData = {
     checkBoxData: {
       labels: ["Statement 1", "Statement 2", "Statement 3"],
@@ -68,7 +107,11 @@ const FormStatistics = ({ list }) => {
                       <h5>
                         {field.id + 1}. {field.text}
                       </h5>
-                      <Pie data={dummyData.checkBoxData} />
+                      {dataSet[field.id].type === "Checkbox" ? (
+                        <Pie data={dataSet[field.id].values} />
+                      ) : (
+                        <Pie data={dummyData.checkBoxData} />
+                      )}
                     </Card.Body>
                   </Card>
                 </Col>
@@ -80,9 +123,13 @@ const FormStatistics = ({ list }) => {
                         {field.id + 1}. {field.text}
                       </h5>
                       <div className="ml-4 mt-3 mr-2 mb-2">
-                        {dummyData.shortAnswerData.map((answer) => (
-                          <p>{answer}</p>
-                        ))}
+                        {dataSet[field.id].type === "Shortanswers"
+                          ? dataSet[field.id].values.map((answer) => (
+                              <p>{answer}</p>
+                            ))
+                          : dummyData.shortAnswerData.map((answer) => (
+                              <p>{answer}</p>
+                            ))}
                       </div>
                     </Card.Body>
                   </Card>
